@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAFKA IRFANDI // Tech & Cybersecurity</title>
+    <title>RAFKA IRFANDI // Personal Portfolio & Sec Lab</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #060913;
-            --bg-card: rgba(15, 23, 42, 0.75);
-            --border-color: rgba(56, 189, 248, 0.2);
-            --primary-blue: #38bdf8;
-            --deep-blue: #0284c7;
-            --accent-red: #ff2a5f;
-            --accent-red-glow: rgba(255, 42, 95, 0.4);
-            --text-light: #f8fafc;
+            --bg-base: #060913;
+            --bg-surface: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --primary-blue: #38bdf8;
+            --accent-red: #ff2a5f;
+            --accent-red-glow: rgba(255, 42, 95, 0.25);
+            --border: rgba(56, 189, 248, 0.15);
+            --wa-green: #22c55e;
         }
 
         * {
@@ -23,424 +24,515 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-light);
+            background-color: var(--bg-base);
+            color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 60%, rgba(255, 42, 95, 0.1) 0%, transparent 40%);
-            background-attachment: fixed;
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 95, 0.08) 0%, transparent 40%);
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 40px 20px;
         }
 
-        /* --- NAVBAR --- */
-        nav {
+        /* HEADER */
+        header {
+            margin-bottom: 30px;
+        }
+
+        .profile-header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--accent-red);
-            text-shadow: 0 0 10px var(--accent-red-glow);
-        }
-
-        .status-badge {
-            font-size: 0.75rem;
-            background: rgba(255, 42, 95, 0.15);
-            color: var(--accent-red);
-            border: 1px solid var(--accent-red);
-            padding: 4px 12px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-red);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-red);
-            animation: pulse 1.5s infinite;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 100px 0 60px 0;
-            position: relative;
-        }
-
-        .tagline {
-            display: inline-block;
-            font-size: 0.85rem;
-            color: var(--primary-blue);
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 6px 16px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #ffffff 40%, var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin-bottom: 35px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 16px;
             flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-blue);
-            color: #000;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
-        }
-
-        .btn-danger {
-            background: transparent;
-            color: var(--accent-red);
-            border: 1px solid var(--accent-red);
-            box-shadow: 0 0 15px var(--accent-red-glow);
-        }
-
-        .btn-danger:hover {
-            background: var(--accent-red);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px var(--accent-red-glow);
-        }
-
-        /* --- STATS GRID --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            margin: 40px 0 80px 0;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 16px;
-            backdrop-filter: blur(12px);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-card.red-theme {
-            border-color: rgba(255, 42, 95, 0.4);
-        }
-
-        .stat-card h3 {
+        .user-meta h1 {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary-blue);
-            margin-bottom: 5px;
+            color: #fff;
+            letter-spacing: -0.5px;
         }
 
-        .stat-card.red-theme h3 {
-            color: var(--accent-red);
-            text-shadow: 0 0 12px var(--accent-red-glow);
-        }
-
-        .stat-card p {
+        .user-meta p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 42, 95, 0.1);
+            border: 1px solid rgba(255, 42, 95, 0.3);
+            color: var(--accent-red);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-red);
+        }
+
+        /* TAB NAVIGATION (CSS ONLY) */
+        input[type="radio"] { display: none; }
+
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            background: var(--bg-surface);
+            padding: 6px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .tab-label {
+            flex: 1;
+            text-align: center;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-label:hover { color: var(--text-main); }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #tab1:checked ~ .tab-nav label[for="tab1"],
+        #tab2:checked ~ .tab-nav label[for="tab2"],
+        #tab3:checked ~ .tab-nav label[for="tab3"] {
+            background: var(--bg-card);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        #tab1:checked ~ .tab-nav label[for="tab1"] { color: var(--primary-blue); }
+        #tab2:checked ~ .tab-nav label[for="tab2"] { color: var(--primary-blue); }
+        #tab3:checked ~ .tab-nav label[for="tab3"] { color: var(--accent-red); }
+
+        #tab1:checked ~ .content-container #content1,
+        #tab2:checked ~ .content-container #content2,
+        #tab3:checked ~ .content-container #content3 {
+            display: block;
+        }
+
+        /* CARDS & COMPONENTS */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .card.red-accent {
+            border-left: 4px solid var(--accent-red);
+            background: linear-gradient(90deg, var(--accent-red-glow) 0%, var(--bg-surface) 100%);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* BIODATA GRID STYLING */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .bio-box {
+            background: var(--bg-card);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .bio-box label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
-        /* --- SECTIONS --- */
-        .section-header {
-            margin-bottom: 40px;
+        .bio-box span {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.05rem;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 800;
+        .bio-callout {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--wa-green);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
             display: flex;
             align-items: center;
             gap: 12px;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--primary-blue);
-            border-radius: 4px;
-            box-shadow: 0 0 10px var(--primary-blue);
-        }
-
-        .section-title.red-accent::before {
-            background: var(--accent-red);
-            box-shadow: 0 0 10px var(--accent-red);
-        }
-
-        /* --- CARDS GRID --- */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 80px;
-        }
-
-        .card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 32px;
-            border-radius: 16px;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-            position: relative;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: border-color 0.2s;
         }
 
-        .card:hover {
+        .social-btn:hover {
             border-color: var(--primary-blue);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .card-icon {
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
+        /* GRID SKILLS & PROJECTS */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
         }
 
-        .card.red-highlight {
-            border-color: rgba(255, 42, 95, 0.3);
-            background: linear-gradient(180deg, rgba(255, 42, 95, 0.05) 0%, var(--bg-card) 100%);
+        .item-box {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
 
-        .card.red-highlight:hover {
-            border-color: var(--accent-red);
-            box-shadow: 0 10px 30px var(--accent-red-glow);
+        .item-box.red-border {
+            border-left: 3px solid var(--accent-red);
         }
 
-        .card.red-highlight .card-icon {
-            color: var(--accent-red);
-        }
-
-        .card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .card-tags {
-            margin-top: 20px;
+        .tag-group {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
+            margin-top: 12px;
         }
 
         .tag {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             padding: 4px 10px;
             border-radius: 6px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(56, 189, 248, 0.1);
             color: var(--primary-blue);
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         .tag.red {
             color: var(--accent-red);
-            border-color: rgba(255, 42, 95, 0.3);
-            background: rgba(255, 42, 95, 0.08);
+            background: rgba(255, 42, 95, 0.1);
+            border-color: rgba(255, 42, 95, 0.2);
         }
 
-        /* --- FOOTER --- */
+        /* FOOTER */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
             text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stats-grid { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            .tab-nav { flex-direction: column; }
+            .user-meta h1 { font-size: 1.8rem; }
+            .bio-callout { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- NAVIGATION -->
-        <nav>
-            <div class="logo">
-                <i class="fa-solid fa-terminal" style="color: var(--primary-blue);"></i>
-                RAFKA<span>.DEV</span>
+        <!-- HEADER PROFILE -->
+        <header>
+            <div class="profile-header">
+                <div class="user-meta">
+                    <h1>RAFKA IRFANDI</h1>
+                    <p>Tech Specialist & Cybersecurity Researcher</p>
+                </div>
+                <div class="status-pill">
+                    <div class="dot"></div> Sec Lab Active
+                </div>
             </div>
-            <div class="status-badge">
-                <div class="status-dot"></div> Security Mindset
-            </div>
-        </nav>
+        </header>
 
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <span class="tagline">// TECH EXPERT & SEC-RESEARCHER</span>
-            <h1>RAFKA IRFANDI</h1>
-            <p>Spesialis Teknologi & Pengembang Sistem berusia 15 tahun. Menguasai arsitektur kode sejak usia 12 tahun, dengan keahlian mendalam pada *software engineering* dan analisis keamanan siber berbasis etis (*educational proposal only*).</p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-code"></i> Eksplorasi Keahlian</a>
-                <a href="#cyber" class="btn btn-danger"><i class="fa-solid fa-shield-halved"></i> Riset Keamanan</a>
-            </div>
-        </section>
+        <!-- TAB SYSTEM -->
+        <div class="tabs-container">
+            <input type="radio" id="tab1" name="tabs" checked>
+            <input type="radio" id="tab2" name="tabs">
+            <input type="radio" id="tab3" name="tabs">
 
-        <!-- KEY METRICS -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>15 YO</h3>
-                <p>Usia Saat Ini</p>
+            <!-- TAB NAV -->
+            <div class="tab-nav">
+                <label for="tab1" class="tab-label">
+                    <i class="fa-solid fa-user"></i> 1. Home / Biodata
+                </label>
+                <label for="tab2" class="tab-label">
+                    <i class="fa-solid fa-code"></i> 2. Keahlian & Proyek
+                </label>
+                <label for="tab3" class="tab-label">
+                    <i class="fa-solid fa-shield-cat"></i> 3. Security Lab
+                </label>
             </div>
-            <div class="stat-card">
-                <h3>3+ Tahun</h3>
-                <p>Pengalaman Coding (Sejak 12 thn)</p>
-            </div>
-            <div class="stat-card red-theme">
-                <h3>Red Team</h3>
-                <p>Simulasi Serangan Edukasi</p>
+
+            <!-- TAB CONTENTS -->
+            <div class="content-container">
+
+                <!-- TAB 1: HOME (BIODATA -> PROGRAM BELAJAR -> SOSMED) -->
+                <div class="tab-content" id="content1">
+                    
+                    <!-- 1. BIODATA UTAMA -->
+                    <div class="card">
+                        <h3><i class="fa-solid fa-id-card" style="color: var(--primary-blue);"></i> Biodata Saya</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">
+                            Halo! Nama gue <strong>Rafka Irfandi</strong>. Gue adalah seorang spesialis teknologi dan pengembang sistem yang berusia 15 tahun. Ketertarikan mendalam gue pada dunia pengodean dan keamanan siber dimulai sejak gue berumur 12 tahun, di mana gue terus belajar dan melakukan riset teknis secara mandiri.
+                        </p>
+
+                        <div class="bio-grid">
+                            <div class="bio-box">
+                                <label>Nama Lengkap</label>
+                                <span>Rafka Irfandi</span>
+                            </div>
+                            <div class="bio-box">
+                                <label>Usia Saat Ini</label>
+                                <span>15 Tahun</span>
+                            </div>
+                            <div class="bio-box">
+                                <label>Pengalaman Coding</label>
+                                <span>Sejak Usia 12 Tahun</span>
+                            </div>
+                            <div class="bio-box">
+                                <label>Fokus Bidang</label>
+                                <span>Software & Cybersecurity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. PROGRAM BELAJAR GRATIS -->
+                    <div class="card">
+                        <h3><i class="fa-solid fa-graduation-cap" style="color: var(--primary-blue);"></i> Program Belajar Coding Gratis</h3>
+                        <p class="bio-callout">
+                            "Ingin Belajar Coding Bersama Saya? Hubungi Saya Di WhatsApp Dan Belajar Secara Gratis Dari Awal Hingga Pro"
+                        </p>
+                        <a href="https://wa.me/6281263073289" target="_blank" class="btn-wa">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp: 6281263073289
+                        </a>
+                    </div>
+
+                    <!-- 3. MEDIA SOSIAL -->
+                    <div class="card">
+                        <h3><i class="fa-solid fa-share-nodes" style="color: var(--primary-blue);"></i> Media Sosial Saya</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Social Media Saya Ada Dibawah, Jangan Lupa Di Follow:</p>
+                        
+                        <div class="social-links">
+                            <a href="https://www.tiktok.com/@rafkairfandi27" target="_blank" class="social-btn">
+                                <i class="fa-brands fa-tiktok" style="color: #ff2a5f;"></i> TikTok: @rafkairfandi27
+                            </a>
+                            <div class="social-btn">
+                                <i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Facebook: Rafka V Irfandi
+                            </div>
+                            <div class="social-btn">
+                                <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube: @erthold2
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: KEAHLIAN & PROYEK -->
+                <div class="tab-content" id="content2">
+                    <div class="card">
+                        <h3><i class="fa-solid fa-code-compare" style="color: var(--primary-blue);"></i> Bahasa Pemrograman</h3>
+                        <div class="grid-list">
+                            <div class="item-box">
+                                <h4 style="color: #fff;">HTML5 / CSS3</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Penyusunan tata letak web responsif & UI modern.</p>
+                                <div class="tag-group"><span class="tag">Web Core</span></div>
+                            </div>
+                            <div class="item-box">
+                                <h4 style="color: #fff;">Python</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Automation script, pengolahan logika & bot.</p>
+                                <div class="tag-group"><span class="tag">Scripting</span></div>
+                            </div>
+                            <div class="item-box">
+                                <h4 style="color: #fff;">JavaScript</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Interaktivitas aplikasi & pengembangan sistem.</p>
+                                <div class="tag-group"><span class="tag">Logic</span></div>
+                            </div>
+                            <div class="item-box">
+                                <h4 style="color: #fff;">Bash / Shell Scripting</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Otomatisasi perintah sistem Linux & Termux.</p>
+                                <div class="tag-group"><span class="tag">Automation</span></div>
+                            </div>
+                            <div class="item-box">
+                                <h4 style="color: #fff;">PHP & SQL</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Manajemen basis data & backend sistem.</p>
+                                <div class="tag-group"><span class="tag">Backend</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fa-solid fa-toolbox" style="color: var(--primary-blue);"></i> Tools & Environment</h3>
+                        <div class="tag-group" style="gap: 10px;">
+                            <span class="tag"><i class="fa-brands fa-linux"></i> Linux OS</span>
+                            <span class="tag"><i class="fa-brands fa-github"></i> GitHub</span>
+                            <span class="tag"><i class="fa-solid fa-terminal"></i> Termux</span>
+                            <span class="tag"><i class="fa-solid fa-bug"></i> Burp Suite</span>
+                            <span class="tag"><i class="fa-solid fa-network-wired"></i> Wireshark</span>
+                            <span class="tag"><i class="fa-solid fa-code"></i> VS Code</span>
+                            <span class="tag"><i class="fa-solid fa-server"></i> Nginx/Apache</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fa-solid fa-cubes" style="color: var(--primary-blue);"></i> Showcase Proyek</h3>
+                        <div class="grid-list">
+                            <div class="item-box">
+                                <h4 style="color: #fff;">Website Portofolio Sendiri</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Rancangan antarmuka personal yang responsif tanpa library eksternal berlebih.</p>
+                            </div>
+                            <div class="item-box">
+                                <h4 style="color: #fff;">Bot WhatsApp Otomatis</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Bot berbasis NodeJS/Python untuk merespons pesan & perintah secara otomatis.</p>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">RAT (Educational Only)</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Simulasi *Remote Access Tool* terisolasi untuk memahami cara kerja kendali jarak jauh.</p>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">Malware Test (Educational Only)</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Pengujian *payload* buatan pada lingkungan terisolasi untuk analisis pertahanan anti-virus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SECURITY LAB -->
+                <div class="tab-content" id="content3">
+                    <div class="card red-accent">
+                        <h3 style="color: var(--accent-red);"><i class="fa-solid fa-shield-halved"></i> Penetrasi & Pengujian Keamanan</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Daftar metode pengujian keamanan siber yang dipelajari pada lingkungan lokal (Educational Proposal Only):</p>
+                        
+                        <div class="grid-list">
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">SQL Injection (SQLi)</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Analisis kerentanan database & mitigasi sanitasi input.</p>
+                                <div class="tag-group"><span class="tag red">Web Attack</span></div>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">Cross-Site Scripting (XSS)</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Pengujian eksekusi skrip berbahaya pada browser.</p>
+                                <div class="tag-group"><span class="tag red">Web Security</span></div>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">Brute Force Simulation</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Pengujian ketahanan otentikasi kata sandi & rate-limiting.</p>
+                                <div class="tag-group"><span class="tag red">Auth Security</span></div>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">Port Scanning</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Pemetaan layanan aktif & analisis port terbuka pada server.</p>
+                                <div class="tag-group"><span class="tag red">Reconnaissance</span></div>
+                            </div>
+                            <div class="item-box red-border">
+                                <h4 style="color: #fff;">Web Defacement Mitigation</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Strategi pemulihan & perlindungan akses pengubahan visual situs.</p>
+                                <div class="tag-group"><span class="tag red">Defensive</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-red);"></i> Platform Belajar & Praktik</h3>
+                        <div class="tag-group" style="gap: 10px;">
+                            <span class="tag red"><i class="fa-solid fa-flag"></i> TryHackMe</span>
+                            <span class="tag red"><i class="fa-solid fa-cube"></i> Hack The Box</span>
+                            <span class="tag red"><i class="fa-solid fa-bug"></i> PortSwigger Web Security Academy</span>
+                            <span class="tag red"><i class="fa-solid fa-robot"></i> AI Research & Lab Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- CORE TECH SKILLS -->
-        <section id="projects" style="padding-top: 20px;">
-            <div class="section-header">
-                <h2 class="section-title">Kapabilitas Sistem & Coding</h2>
-            </div>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-code-compare"></i></div>
-                    <h4>Pengembangan Perangkat Lunak</h4>
-                    <p>Membangun struktur aplikasi yang efisien, bersih, dan terintegrasi menggunakan arsitektur pemrograman modern berbasis skala tinggi.</p>
-                    <div class="card-tags">
-                        <span class="tag">System Architecture</span>
-                        <span class="tag">Clean Code</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
-                    <h4>Analisis Jaringan & Komunikasi Data</h4>
-                    <p>Memahami bagaimana data melintasi protokol jaringan, mengidentifikasi kebocoran data, dan mengoptimalkan performa traffic.</p>
-                    <div class="card-tags">
-                        <span class="tag">Networking</span>
-                        <span class="tag">Protocols</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CYBERSECURITY & ATTACK SECTION -->
-        <section id="cyber">
-            <div class="section-header">
-                <h2 class="section-title red-accent">Eksplorasi Keamanan Siber & Penetration Testing</h2>
-            </div>
-            <div class="cards-grid">
-                <div class="card red-highlight">
-                    <div class="card-icon"><i class="fa-solid fa-bug-slash"></i></div>
-                    <h4>Simulasi Penyerangan (Educational Proposal Only)</h4>
-                    <p>Pernah melakukan uji penetrasi (*attack simulation*) pada lingkungan terisolasi untuk mendeteksi celah kerentanan (*vulnerability*) secara proaktif sebelum dimanfaatkan oleh pihak luar.</p>
-                    <div class="card-tags">
-                        <span class="tag red">Penetration Testing</span>
-                        <span class="tag red">Ethical Hacking</span>
-                    </div>
-                </div>
-                <div class="card red-highlight">
-                    <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
-                    <h4>Mitigasi Kerentanan & Secure Coding</h4>
-                    <p>Menganalisis skenario eksploitasi dan menerapkan pertahanan lapisan ganda (*hardening*) untuk melindungi aplikasi dari kerentanan umum seperti SQLi atau XSS.</p>
-                    <div class="card-tags">
-                        <span class="tag red">Defensive Sec</span>
-                        <span class="tag red">Exploit Mitigation</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- FOOTER -->
         <footer>
-            <p>© 2026 Rafka Irfandi. Dirancang untuk Edukasi, Pengamanan Sistem & Pengembangan Teknologi.</p>
+            <p style="font-size: 0.75rem;">© 2026 Rafka Irfandi. Dibuat & dikembangkan secara mandiri untuk tujuan riset dan edukasi.</p>
         </footer>
     </div>
 
